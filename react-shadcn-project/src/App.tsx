@@ -1,10 +1,13 @@
 import './App.css';
 import { Button } from '@/components/ui/button';
+import Layout from './layout';
 
 function App() {
 	return (
 		<>
-			<Button>Click me</Button>
+			<Layout>
+				<Button>Click me</Button>
+			</Layout>
 		</>
 	);
 }
