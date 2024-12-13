@@ -1,15 +1,9 @@
 import './App.css';
-import { Button } from '@/components/ui/button';
-import Layout from './layout';
+import { RouterProvider } from 'react-router';
+import router from '@/routes';
 
 function App() {
-	return (
-		<>
-			<Layout>
-				<Button>Click me</Button>
-			</Layout>
-		</>
-	);
+	return <RouterProvider router={router} />;
 }
 
 export default App;
