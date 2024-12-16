@@ -1,3 +1,9 @@
+import { SampleList } from '@/features/dashboard';
+
 export default function index() {
-	return <div>Hi there</div>;
+	return (
+		<div>
+			<SampleList />
+		</div>
+	);
 }
