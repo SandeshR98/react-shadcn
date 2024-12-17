@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import DashboardTitle from './sections/DashboardTitle';
-import SampleList from './lists/SampleList';
-import Panel from '@/components/Panel';
-import SampleForm from './forms/SampleForm';
+import DashboardTitle from '../sections/DashboardTitle';
+import SampleList from '../lists/SampleList';
+import Panel from '@/components/shared/Panel';
+import SampleForm from '../forms/SampleForm';
 
 const Dashboard = () => {
 	const [openPanel, setOpenPanel] = useState<boolean>(false);

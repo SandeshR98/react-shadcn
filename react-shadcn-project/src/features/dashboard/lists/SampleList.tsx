@@ -1,4 +1,4 @@
-import ReactTable from '@/components/ReactTable';
+import ReactTable from '@/components/shared/ReactTable';
 import { Payment } from '@/interfaces';
 import { ColumnDef } from '@tanstack/react-table';
 
