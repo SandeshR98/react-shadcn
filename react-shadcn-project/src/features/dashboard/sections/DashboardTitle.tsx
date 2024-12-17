@@ -4,7 +4,7 @@ interface DashboardTitleProps {
 	setOpenPanel: Dispatch<SetStateAction<boolean>>; // Type definition for the prop
 }
 
-const DashboardTitle: React.FC<DashboardTitleProps> = ({ setOpenPanel }) => {
+const DashboardTitle = ({ setOpenPanel }: DashboardTitleProps) => {
 	return (
 		<div className='flex justify-between items-center mb-4'>
 			<h1 className='text-2xl font-bold'>Sample List</h1>

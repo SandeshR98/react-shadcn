@@ -18,13 +18,13 @@ interface PanelProps {
 	setOpenPanel: React.Dispatch<React.SetStateAction<boolean>>; // Type definition for the prop
 }
 
-const Panel: React.FC<PanelProps> = ({
+const Panel = ({
 	openPanel,
 	panelTitle,
 	panelDescription,
 	children,
 	setOpenPanel,
-}) => {
+}: PanelProps) => {
 	return (
 		<Sheet open={openPanel} onOpenChange={setOpenPanel} modal>
 			<SheetPortal>
