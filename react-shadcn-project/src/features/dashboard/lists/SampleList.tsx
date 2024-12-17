@@ -1,14 +1,6 @@
 import ReactTable from '@/components/ReactTable';
+import { Payment } from '@/interfaces';
 import { ColumnDef } from '@tanstack/react-table';
-
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-export type Payment = {
-	id: string;
-	amount: number;
-	status: 'pending' | 'processing' | 'success' | 'failed';
-	email: string;
-};
 
 const columns: ColumnDef<Payment>[] = [
 	{
@@ -28,6 +20,10 @@ const columns: ColumnDef<Payment>[] = [
 const SampleList = () => {
 	return (
 		<div className='container mx-auto py-10'>
+			<div className='flex justify-between items-center mb-4'>
+				<h1 className='text-3xl font-bold'>Sample List</h1>
+			</div>
+
 			<ReactTable columns={columns} data={[]} />
 		</div>
 	);
