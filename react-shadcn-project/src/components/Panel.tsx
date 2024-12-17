@@ -1,4 +1,3 @@
-import { Dispatch, FC, ReactNode, SetStateAction } from 'react';
 import { Button } from '@/components/ui/button';
 
 import {
@@ -15,11 +14,11 @@ interface PanelProps {
 	openPanel: boolean;
 	panelTitle?: string;
 	panelDescription?: string;
-	children?: ReactNode;
-	setOpenPanel: Dispatch<SetStateAction<boolean>>; // Type definition for the prop
+	children?: React.ReactNode;
+	setOpenPanel: React.Dispatch<React.SetStateAction<boolean>>; // Type definition for the prop
 }
 
-const Panel: FC<PanelProps> = ({
+const Panel: React.FC<PanelProps> = ({
 	openPanel,
 	panelTitle,
 	panelDescription,
