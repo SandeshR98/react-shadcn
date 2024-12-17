@@ -1,50 +1,45 @@
+import { Dispatch, FC, ReactNode, SetStateAction } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+
 import {
 	Sheet,
-	SheetClose,
 	SheetContent,
 	SheetDescription,
 	SheetFooter,
 	SheetHeader,
 	SheetTitle,
-	SheetTrigger,
+	SheetPortal,
 } from '@/components/ui/sheet';
 
-const Panel = () => {
+interface PanelProps {
+	openPanel: boolean;
+	panelTitle?: string;
+	panelDescription?: string;
+	children?: ReactNode;
+	setOpenPanel: Dispatch<SetStateAction<boolean>>; // Type definition for the prop
+}
+
+const Panel: FC<PanelProps> = ({
+	openPanel,
+	panelTitle,
+	panelDescription,
+	children,
+	setOpenPanel,
+}) => {
 	return (
-		<Sheet>
-			<SheetTrigger asChild>
-				<Button variant='outline'>Open</Button>
-			</SheetTrigger>
-			<SheetContent>
-				<SheetHeader>
-					<SheetTitle>Edit profile</SheetTitle>
-					<SheetDescription>
-						Make changes to your profile here. Click save when you're done.
-					</SheetDescription>
-				</SheetHeader>
-				<div className='grid gap-4 py-4'>
-					<div className='grid grid-cols-4 items-center gap-4'>
-						<Label htmlFor='name' className='text-right'>
-							Name
-						</Label>
-						<Input id='name' value='Pedro Duarte' className='col-span-3' />
-					</div>
-					<div className='grid grid-cols-4 items-center gap-4'>
-						<Label htmlFor='username' className='text-right'>
-							Username
-						</Label>
-						<Input id='username' value='@peduarte' className='col-span-3' />
-					</div>
-				</div>
-				<SheetFooter>
-					<SheetClose asChild>
+		<Sheet open={openPanel} onOpenChange={setOpenPanel} modal>
+			<SheetPortal>
+				<SheetContent>
+					<SheetHeader>
+						<SheetTitle>{panelTitle}</SheetTitle>
+						<SheetDescription>{panelDescription}</SheetDescription>
+					</SheetHeader>
+					<div className='grid gap-4 py-4'>{children}</div>
+					<SheetFooter>
 						<Button type='submit'>Save changes</Button>
-					</SheetClose>
-				</SheetFooter>
-			</SheetContent>
+					</SheetFooter>
+				</SheetContent>
+			</SheetPortal>
 		</Sheet>
 	);
 };

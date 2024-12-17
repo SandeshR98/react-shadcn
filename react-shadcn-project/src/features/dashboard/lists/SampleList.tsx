@@ -18,15 +18,7 @@ const columns: ColumnDef<Payment>[] = [
 ];
 
 const SampleList = () => {
-	return (
-		<div className='container mx-auto py-10'>
-			<div className='flex justify-between items-center mb-4'>
-				<h1 className='text-3xl font-bold'>Sample List</h1>
-			</div>
-
-			<ReactTable columns={columns} data={[]} />
-		</div>
-	);
+	return <ReactTable columns={columns} data={[]} />;
 };
 
 export default SampleList;

@@ -1,1 +1,1 @@
-export { default as SampleList } from './lists/SampleList';
+export { default as Dashboard } from '@/features/dashboard/Dashboard';
