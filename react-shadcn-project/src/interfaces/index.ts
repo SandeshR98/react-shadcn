@@ -1,2 +1,2 @@
 // interfaces/index.ts
-export * from '@/interfaces/Payment';
+export * from '@/interfaces/Sample';

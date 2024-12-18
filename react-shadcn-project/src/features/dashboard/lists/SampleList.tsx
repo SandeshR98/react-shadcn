@@ -1,8 +1,10 @@
 import ReactTable from '@/components/shared/ReactTable';
-import { Payment } from '@/interfaces';
+import { Sample } from '@/interfaces';
+import SampleService from '@/services/SampleService';
 import { ColumnDef } from '@tanstack/react-table';
+import { useQuery } from '@tanstack/react-query';
 
-const columns: ColumnDef<Payment>[] = [
+const columns: ColumnDef<Sample>[] = [
 	{
 		accessorKey: 'name',
 		header: 'Name',
@@ -18,7 +20,13 @@ const columns: ColumnDef<Payment>[] = [
 ];
 
 const SampleList = () => {
-	return <ReactTable columns={columns} data={[]} />;
+	const { data: { Samples = [] } = {} } = useQuery({
+		queryKey: ['samples'],
+		queryFn: () => SampleService.getSamples(),
+		refetchOnWindowFocus: false,
+	});
+
+	return <ReactTable columns={columns} data={Samples} />;
 };
 
 export default SampleList;
