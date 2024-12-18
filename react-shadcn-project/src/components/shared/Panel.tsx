@@ -16,6 +16,7 @@ interface PanelProps {
 	panelDescription?: string;
 	children?: React.ReactNode;
 	setOpenPanel: React.Dispatch<React.SetStateAction<boolean>>; // Type definition for the prop
+	onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Panel = ({
@@ -24,6 +25,7 @@ const Panel = ({
 	panelDescription,
 	children,
 	setOpenPanel,
+	onClick,
 }: PanelProps) => {
 	return (
 		<Sheet open={openPanel} onOpenChange={setOpenPanel} modal>
@@ -35,7 +37,7 @@ const Panel = ({
 					</SheetHeader>
 					<div className='grid gap-4 py-4'>{children}</div>
 					<SheetFooter>
-						<Button type='submit'>Save changes</Button>
+						<Button onClick={onClick}>Save</Button>
 					</SheetFooter>
 				</SheetContent>
 			</SheetPortal>
