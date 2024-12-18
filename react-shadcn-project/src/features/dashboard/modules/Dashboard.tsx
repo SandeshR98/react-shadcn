@@ -26,16 +26,12 @@ const Dashboard = () => {
 		if (selectedSample.mode === OPERATION_MODE.View || selectedSample.mode === OPERATION_MODE.Edit) {
 			const { sample } = await SampleService.getSample(selectedSample.id);
 
-			setSampleInfo((prevState) => ({ ...prevState, ...sample }));
-			setOpenPanel(true);
+			setSampleInfo({ ...sampleInfo, ...sample });
 			return sample;
 		}
 	};
 
 	const handleKebab = (mode: number, id: number) => {
-		const action = [OPERATION_MODE.View, OPERATION_MODE.Edit, OPERATION_MODE.Create].includes(mode) ? mode : OPERATION_MODE.Create;
-		setSelectedSample({ mode: action, id });
-
 		if (mode === OPERATION_MODE.Create) {
 			setSampleInfo({ name: '', mobile: '', email: '' });
 		}
@@ -44,6 +40,7 @@ const Dashboard = () => {
 			// DELETE LOGIC
 		}
 
+		setSelectedSample({ mode, id });
 		setOpenPanel(true);
 	};
 
