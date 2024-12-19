@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button';
-
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetPortal } from '@/components/ui/sheet';
 
 interface PanelProps {
@@ -8,7 +7,7 @@ interface PanelProps {
 	panelDescription?: string;
 	children?: React.ReactNode;
 	panelFooter?: boolean;
-	setOpenPanel: React.Dispatch<React.SetStateAction<boolean>>; // Type definition for the prop
+	setOpenPanel: React.Dispatch<React.SetStateAction<boolean>>;
 	onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
@@ -16,15 +15,14 @@ const Panel = ({ openPanel, panelTitle, panelDescription, children, panelFooter,
 	return (
 		<Sheet open={openPanel} onOpenChange={setOpenPanel} modal>
 			<SheetPortal>
-				<SheetContent>
+				<SheetContent className='flex flex-col h-full'>
 					<SheetHeader>
 						<SheetTitle>{panelTitle}</SheetTitle>
 						<SheetDescription>{panelDescription}</SheetDescription>
 					</SheetHeader>
-					<div className='grid gap-4 py-4'>{children}</div>
-
+					<div className='flex-grow overflow-y-auto grid gap-4 py-4'>{children}</div>
 					{panelFooter && (
-						<SheetFooter>
+						<SheetFooter className='mt-auto'>
 							<Button onClick={onClick}>Save</Button>
 						</SheetFooter>
 					)}
