@@ -1,6 +1,6 @@
 import { DashboardModule } from '@/features/dashboard';
 
-export default function index() {
+export default function Dashboard() {
 	return (
 		<div>
 			<DashboardModule />
