@@ -1,1 +1,1 @@
-export { default as Dashboard } from '@/features/dashboard/modules/Dashboard';
+export { default as DashboardModule } from '@/features/dashboard/modules/DashboardModule';

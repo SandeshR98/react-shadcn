@@ -6,7 +6,7 @@ import MainLayout from '@/layout';
 import ErrorBoundary from './ErrorBoundary';
 
 // PAGES
-const Dashboard = Loadable(lazy(() => import('@/pages/dashboard')));
+const Dashboard = Loadable(lazy(() => import('@/pages/Dashboard')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 

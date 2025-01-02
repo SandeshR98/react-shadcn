@@ -10,7 +10,7 @@ import { useQuery } from '@tanstack/react-query';
 import { OPERATION_MODE } from '@/constants/enums';
 import DeleteModal from '@/components/shared/DeleteModal';
 
-const Dashboard = () => {
+const DashboardModule = () => {
 	const queryClient = useQueryClient();
 	const [openPanel, setOpenPanel] = useState<boolean>(false);
 	const [openDeleteModal, setOpenDeleteModal] = useState<boolean>(false);
@@ -123,4 +123,4 @@ const Dashboard = () => {
 	);
 };
 
-export default Dashboard;
+export default DashboardModule;
