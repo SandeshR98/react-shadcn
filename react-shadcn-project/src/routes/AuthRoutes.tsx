@@ -4,6 +4,7 @@ import { Outlet } from 'react-router';
 // PROJECT IMPORT
 import Loadable from '@/components/Loadable';
 import ErrorBoundary from './ErrorBoundary';
+import GuestGuard from '@/utils/route-guard/GuestGuard';
 
 // PAGES
 const Login = Loadable(lazy(() => import('@/pages/Login')));
@@ -16,7 +17,11 @@ const LoginRoutes = {
 	children: [
 		{
 			path: '/',
-			element: <Outlet />,
+			element: (
+				<GuestGuard>
+					<Outlet />
+				</GuestGuard>
+			),
 			children: [
 				{
 					path: 'login',

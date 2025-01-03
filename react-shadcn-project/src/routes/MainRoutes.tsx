@@ -4,6 +4,7 @@ import { lazy } from 'react';
 import Loadable from '@/components/Loadable';
 import MainLayout from '@/layout';
 import ErrorBoundary from './ErrorBoundary';
+import AuthGuard from '@/utils/route-guard/AuthGuard';
 
 // PAGES
 const Dashboard = Loadable(lazy(() => import('@/pages/Dashboard')));
@@ -16,7 +17,11 @@ const MainRoutes = {
 	children: [
 		{
 			path: '/',
-			element: <MainLayout />,
+			element: (
+				<AuthGuard>
+					<MainLayout />
+				</AuthGuard>
+			),
 			children: [
 				{
 					path: 'dashboard',

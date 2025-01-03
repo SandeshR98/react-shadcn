@@ -13,7 +13,6 @@ import {
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '@/components/ui/sidebar';
-import { useNavigate } from 'react-router';
 
 export function NavUser({
 	user,
@@ -25,7 +24,6 @@ export function NavUser({
 	};
 }) {
 	const { isMobile } = useSidebar();
-	const navigate = useNavigate();
 
 	return (
 		<SidebarMenu>
@@ -80,7 +78,12 @@ export function NavUser({
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
-						<DropdownMenuItem onClick={() => navigate('/login', { replace: true })}>
+						<DropdownMenuItem
+							onClick={() => {
+								sessionStorage.clear();
+								window.location.reload();
+							}}
+						>
 							<LogOut />
 							Log out
 						</DropdownMenuItem>
