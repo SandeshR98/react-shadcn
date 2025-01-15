@@ -1,15 +1,12 @@
 import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router';
 
 // ==============================|| AUTH GUARD ||============================== //
-
-import { useLocation, useNavigate } from 'react-router';
 
 const AuthGuard = ({ children }: { children: React.ReactNode }) => {
 	const isLoggedIn = sessionStorage.getItem('isLoggedIn');
 	const navigate = useNavigate();
 	const location = useLocation();
-
-	console.log(isLoggedIn);
 
 	useEffect(() => {
 		if (!isLoggedIn) {

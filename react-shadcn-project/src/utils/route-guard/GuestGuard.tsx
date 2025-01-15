@@ -1,25 +1,23 @@
-import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router';
-
-// project import
+import { useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router';
 
 // ==============================|| GUEST GUARD ||============================== //
 
 const GuestGuard = ({ children }: { children: React.ReactNode }) => {
 	const navigate = useNavigate();
-	const location = useLocation();
 	const isLoggedIn = sessionStorage.getItem('isLoggedIn');
 
-	useEffect(() => {
+	const handleNavigation = useMemo(() => {
+		if (!isLoggedIn) return () => navigate('/login', { replace: true });
+
 		if (isLoggedIn) {
-			navigate('/dashboard', {
-				state: {
-					from: '',
-				},
-				replace: true,
-			});
+			return () => navigate('/dashboard', { replace: true });
 		}
-	}, [isLoggedIn, navigate, location]);
+	}, [isLoggedIn, navigate]);
+
+	useEffect(() => {
+		if (handleNavigation) handleNavigation();
+	}, [handleNavigation]);
 
 	return children;
 };
